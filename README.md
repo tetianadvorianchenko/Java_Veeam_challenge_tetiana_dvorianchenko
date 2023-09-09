@@ -1,14 +1,15 @@
-# Celonis test automation challenge
+# Veeam test automation challenge
 
-This challenge has a goal to implement an automated test suite which consists of some
-basic health checks in order to validate that the system is up and running and catches any
-potential bugs introduced by changes to the system.
+Using Selenium WebDriver, please do the following:
+- Open https://cz.careers.veeam.com/vacancies and maximize the browser window.
+- Then, choose Research & Development and English from the lists of departments and
+  languages, respectively.
+- Please, count the number of jobs found and compare this value with the expected result.
 
 ## Coverage
-Test suite consisting of automated tests that check the login functionality, validates presence and availability of all 3 Demo analyses:
-Order to cash, Purchase to pay and service now ticketing by ensuring that the analyses load
-successfully and display the content correctly when opened.
-Implemented in Java with Cucumber+Selenium+JUnit.
+- Test has parametrized  values of input parameters and the expected
+job number so that the code could be used with various parameter sets.
+- Used a browser of my choice (Chrome)
 
 ## Run requirements
 - Java 8+ installed
