@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    testImplementation 'io.cucumber:cucumber-java:7.13.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.13.0'
+
+    // Use JUnit test framework.
+    testImplementation 'junit:junit:4.13.2'
+
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:30.1.1-jre'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.12.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.4.0'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.1'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+
+            args = ['--plugin', 'pretty',
+                    '--glue', 'steps_definitions', 'src/test/resources'
+            ]
+        }
+
+    }
+}
